@@ -2,6 +2,8 @@
 a blog service written by golfing
 
 ## 进度
+https://github.com/go-programming-tour-book/blog-service
+
 P104
 
 ## 1. 标签
@@ -65,4 +67,13 @@ curl -X GET 'http://localhost:8000/api/v1/articles/1'
 ### 2.5 获取文章列表
 ```
 curl -X GET 'http://localhost:8000/api/v1/articles?tag_id=1&page=1&page_size=10'
+```
+
+## 3. 文件上传
+
+### 3.1 上传文件
+```
+curl -X POST 'http://localhost:8000/upload/file' \
+-F 'file=@/Users/zhengguang.li/code/go_play/go-blog/tony.jpeg' \
+-F 'type=1'
 ```
