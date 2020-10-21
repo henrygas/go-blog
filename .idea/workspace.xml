@@ -23,18 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb93723f-990b-42fd-b8b3-a5e35cec9273" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/dao/article.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/dao/article_tag.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/dao/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dao/tag.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/article_tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/article_tag.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/model.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/tag.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routers/api/v1/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/api/v1/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/errcode/module_code.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/errcode/module_code.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
