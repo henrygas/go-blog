@@ -77,3 +77,8 @@ curl -X POST 'http://localhost:8000/upload/file' \
 -F 'file=@/Users/zhengguang.li/code/go_play/go-blog/tony.jpeg' \
 -F 'type=1'
 ```
+
+## 4. 鉴权
+```
+curl -X GET 'http://localhost:8000/auth?app_key=henry-key&app_secret=henry-secret'
+```
