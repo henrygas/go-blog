@@ -17,6 +17,7 @@ func GetAuth(c *gin.Context) {
 	if valid == false {
 		global.Logger.Errorf("app.BindAndValid errs: %v", errs)
 		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		panic("发生鉴权错误啦，快来看看吧")
 		return
 	}
 

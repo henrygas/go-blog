@@ -79,6 +79,22 @@ curl -X POST 'http://localhost:8000/upload/file' \
 ```
 
 ## 4. 鉴权
+### 4.1 获取token
 ```
 curl -X GET 'http://localhost:8000/auth?app_key=henry-key&app_secret=henry-secret'
+```
+
+### 4.2 没有获取token
+```
+curl -X GET 'http://localhost:8000/api/v1/tags'
+```
+
+### 4.3 token错误
+```
+curl -X GET 'http://localhost:8000/api/v1/tags' -H 'token:abcdefghijklmn'
+```
+
+### 4.4 token超时
+```
+curl -X GET 'http://localhost:8000/api/v1/tags' -H 'token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiYWIyODVkYTc5NTgzOTQ5NGE2OTJhN2Y1NmU3NWUzZGQiLCJhcHBfc2VjcmV0IjoiODBlMjc2YzFmMjBlZDdmOGJjMmMzZWIzNWUxYTAxZmUiLCJleHAiOjE1MDMzNDU5NTQsImlzcyI6ImJsb2ctc2VydmljZSJ9.eiDvkMTwQJKUyOmgNlJ0DER9hTjiTVYRMl0wkiSvlhc'
 ```
