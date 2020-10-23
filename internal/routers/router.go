@@ -9,7 +9,18 @@ import (
 	_ "go-blog/docs"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
+	"go-blog/pkg/limiter"
 	"net/http"
+	"time"
+)
+
+var methodLimiters = limiter.NewMethodLimiter().AddBuckets(
+	limiter.LimiterBucketRule{
+		Key: "/auth",
+		FillInterval: time.Second,
+		Capacity: 10,
+		Quantum: 10,
+	},
 )
 
 func NewRouter() *gin.Engine {
@@ -22,6 +33,9 @@ func NewRouter() *gin.Engine {
 		r.Use(middleware.Recovery())
 	}
 
+	r.Use(middleware.RateLimiter(methodLimiters))
+	r.Use(middleware.ContextTimeout(global.AppSetting.DefaultContextTimeout))
+	r.Use(middleware.Tracing())
 	r.Use(middleware.Transactions())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 

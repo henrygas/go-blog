@@ -22,14 +22,14 @@ func Recovery() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		defer func() {
 			if err := recover(); err != nil {
-				global.Logger.WithCallersFrames().WithContext(c).Errorf("panic recover err: %v", err)
+				global.Logger.WithCallersFrames().WithContext(c).Errorf(c, "panic recover err: %v", err)
 				err := defaultMailer.SendMail(
 					global.EmailSetting.To,
 					fmt.Sprintf("异常抛出，发生时间: %d", time.Now().Unix()),
 					fmt.Sprintf("错误信息: %v", err),
 				)
 				if err != nil {
-					global.Logger.WithContext(c).Panicf("mail.SendMail err: %v", err)
+					global.Logger.WithContext(c).Panicf(c, "mail.SendMail err: %v", err)
 				}
 
 				app.NewResponse(c).ToErrorResponse(errcode.ServerError)

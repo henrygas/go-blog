@@ -42,7 +42,7 @@ func (u Upload) UploadFile(c *gin.Context) {
 	// 处理文件保存时报错
 	fileInfo, err := svc.UploadFile(upload.FileType(fileType), file, fileHeader)
 	if err != nil {
-		global.Logger.Errorf("svc.UploadFile err: %v", err)
+		global.Logger.Errorf(c, "svc.UploadFile err: %v", err)
 		response.ToErrorResponse(errcode.ErrorUploadFileFail.WithDetails(err.Error()))
 		return
 	}

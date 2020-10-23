@@ -7,6 +7,7 @@ import (
 	"go-blog/internal/routers"
 	"go-blog/pkg/logger"
 	"go-blog/pkg/setting"
+	"go-blog/pkg/tracer"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"
@@ -27,6 +28,11 @@ func init() {
 	err = setupLogger()
 	if err != nil {
 		log.Fatalf("init.setupLogger err: %v", err)
+	}
+
+	err = setupTracer()
+	if err != nil {
+		log.Fatalf("init.setupTracer err: %v", err)
 	}
 }
 
@@ -62,6 +68,8 @@ func setupSetting() error {
 	if err != nil {
 		return err
 	}
+
+	global.AppSetting.DefaultContextTimeout *= time.Second
 
 	err = s.ReadSection("Database", &global.DatabaseSetting)
 	if err != nil {
@@ -104,5 +112,15 @@ func setupLogger() error {
 		LocalTime: true,
 	}, "", log.LstdFlags).WithCaller(2)
 
+	return nil
+}
+
+func setupTracer() error {
+	jaegerTracer, _, err := tracer.NewJaegerTracer("blog-service", "localhost:6831")
+	if err != nil {
+		return err
+	}
+
+	global.Tracer = jaegerTracer
 	return nil
 }

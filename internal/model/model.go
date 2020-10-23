@@ -7,6 +7,7 @@ import (
 	"go-blog/global"
 	"go-blog/pkg/setting"
 	"time"
+	otgorm "github.com/eddycjy/opentracing-gorm"
 )
 
 const (
@@ -48,6 +49,8 @@ func NewDBEngine(databaseSetting *setting.DatabaseSetting) (*gorm.DB, error) {
 	db.Callback().Delete().Replace("gorm:delete", deleteCallback)
 	db.DB().SetMaxIdleConns(databaseSetting.MaxIdleConns)
 	db.DB().SetMaxOpenConns(databaseSetting.MaxOpenConns)
+
+	otgorm.AddGormCallbacks(db)
 
 	return db, nil
 }
