@@ -3,6 +3,7 @@ package service
 import (
 	"go-blog/internal/model"
 	"go-blog/pkg/app"
+	"go-blog/pkg/errcode"
 )
 
 type CountTagRequest struct {
@@ -41,6 +42,13 @@ func (svc *Service) GetTagList(param *TagListRequest, pager *app.Pager) ([]*mode
 }
 
 func (svc *Service) CreateTag(param *CreateTagRequest) error {
+	tag, err := svc.dao.GetTagByName(param.Name, param.State)
+	if err != nil {
+		return err
+	}
+	if tag.ID > 0 {
+		return errcode.ErrorCreateTagFail
+	}
 	return svc.dao.CreateTag(param.Name, param.State, param.CreatedBy)
 }
 

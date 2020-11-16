@@ -1,6 +1,6 @@
 Server:
   RunMode: release
-  HttpPort: 8000
+  HttpPort: 8001
   ReadTimeout: 60
   WriteTimeout: 60
 App:

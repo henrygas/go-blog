@@ -98,3 +98,13 @@ curl -X GET 'http://localhost:8000/api/v1/tags' -H 'token:abcdefghijklmn'
 ```
 curl -X GET 'http://localhost:8000/api/v1/tags' -H 'token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiYWIyODVkYTc5NTgzOTQ5NGE2OTJhN2Y1NmU3NWUzZGQiLCJhcHBfc2VjcmV0IjoiODBlMjc2YzFmMjBlZDdmOGJjMmMzZWIzNWUxYTAxZmUiLCJleHAiOjE1MDMzNDU5NTQsImlzcyI6ImJsb2ctc2VydmljZSJ9.eiDvkMTwQJKUyOmgNlJ0DER9hTjiTVYRMl0wkiSvlhc'
 ```
+
+## 5. 使用流程说明
++ 通过下列链接获得服务端生成的token
+```
+curl -X GET 'http://localhost:8000/auth?app_key=henry-key&app_secret=henry-secret'
+```
++ 带token去访问API
+```
+curl -X GET 'http://localhost:8001/api/v1/tags?page=1&page_size=2&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfa2V5IjoiYWIyODVkYTc5NTgzOTQ5NGE2OTJhN2Y1NmU3NWUzZGQiLCJhcHBfc2VjcmV0IjoiODBlMjc2YzFmMjBlZDdmOGJjMmMzZWIzNWUxYTAxZmUiLCJleHAiOjE2MDU1MDQzMTAsImlzcyI6ImJsb2ctc2VydmljZSJ9.MLoT7dpLiKBwgH10yqCjfb3fO0goH-67c8M-FkkYdsw'
+```

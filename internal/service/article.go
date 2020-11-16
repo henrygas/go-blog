@@ -4,6 +4,7 @@ import (
 	"go-blog/internal/dao"
 	"go-blog/internal/model"
 	"go-blog/pkg/app"
+	"go-blog/pkg/errcode"
 	"strconv"
 )
 
@@ -109,6 +110,13 @@ func (svc *Service) GetArticleList(param *ArticleListRequest, pager *app.Pager) 
 }
 
 func (svc *Service) CreateArticle(param *CreateArticleRequest) error {
+	oldArticle, err := svc.dao.GetArticleByTitle(param.Title, param.State)
+	if err != nil {
+		return err
+	}
+	if oldArticle.ID > 0 {
+		return errcode.ErrorCreateArticleFail
+	}
 	article, err := svc.dao.CreateArticle(&dao.Article{
 		Title: param.Title,
 		Desc: param.Desc,

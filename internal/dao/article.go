@@ -60,6 +60,12 @@ func (d *Dao) GetArticle(id uint32, state uint8) (model.Article, error) {
 	return article.Get(d.engine)
 }
 
+// 根据title和state查询Article记录
+func (d *Dao) GetArticleByTitle(title string, state uint8) (model.Article, error) {
+	article := model.Article{Title: title, State: state}
+	return article.GetByTitle(d.engine)
+}
+
 // 删除指定ID的article记录
 func (d *Dao) DeleteArticle(id uint32) error {
 	article := model.Article{Model: &model.Model{ID: id}}

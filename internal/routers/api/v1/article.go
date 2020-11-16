@@ -24,7 +24,7 @@ func NewArticle() Article {
 	return Article{}
 }
 
-func (t Article) Get(c *gin.Context) {
+func (a Article) Get(c *gin.Context) {
 	param := service.ArticleRequest{
 		ID: convert.StrTo(c.Param("id")).MustUInt32(),
 	}
@@ -48,7 +48,7 @@ func (t Article) Get(c *gin.Context) {
 	return
 }
 
-func (t Article) List(c *gin.Context) {
+func (a Article) List(c *gin.Context) {
 	param := service.ArticleListRequest{}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -71,7 +71,7 @@ func (t Article) List(c *gin.Context) {
 	return
 }
 
-func (t Article) Create(c *gin.Context) {
+func (a Article) Create(c *gin.Context) {
 	param := service.CreateArticleRequest{}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -117,7 +117,7 @@ func (a Article) Update(c *gin.Context) {
 	return
 }
 
-func (t Article) Delete(c *gin.Context) {
+func (a Article) Delete(c *gin.Context) {
 	param := service.DeleteArticleRequest{
 		ID: convert.StrTo(c.Param("id")).MustUInt32(),
 	}
