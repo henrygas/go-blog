@@ -4,7 +4,7 @@ a blog service written by golfing
 ## 进度
 https://github.com/go-programming-tour-book/blog-service
 
-P163
+P168
 
 ## 1. 标签
 ### 1.1 新增标签
